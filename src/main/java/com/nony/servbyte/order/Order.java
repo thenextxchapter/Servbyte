@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 import com.nony.servbyte.Status;
+import com.nony.servbyte.orderItem.OrderItem;
 import com.nony.servbyte.serviceProvider.ServiceProvider;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

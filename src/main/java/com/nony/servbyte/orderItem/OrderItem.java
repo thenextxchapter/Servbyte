@@ -1,8 +1,9 @@
-package com.nony.servbyte.order;
+package com.nony.servbyte.orderItem;
 
 import java.util.Objects;
 
 import com.nony.servbyte.meal.Meal;
+import com.nony.servbyte.order.Order;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
