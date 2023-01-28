@@ -36,10 +36,10 @@ public class ServiceProvider {
 	@Column(nullable = false)
 	private Type type;
 
-	@Column(length = 128, nullable = false, unique = true)
+	@Column(length = 128, nullable = false)
 	private String email;
 
-	@Column(length = 15, nullable = false, unique = true)
+	@Column(length = 15, nullable = false)
 	private String phoneNumber;
 
 	@Column(length = 64)
