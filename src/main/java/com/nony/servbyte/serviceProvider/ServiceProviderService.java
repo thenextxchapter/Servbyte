@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ServiceProviderService {
-	private final ServiceProvideRepository serviceProvideRepo;
+	private final ServiceProviderRepository serviceProvideRepo;
 
-	public ServiceProviderService(ServiceProvideRepository serviceProvideRepo) {
+	public ServiceProviderService(ServiceProviderRepository serviceProvideRepo) {
 		this.serviceProvideRepo = serviceProvideRepo;
 	}
 
@@ -40,9 +40,9 @@ public class ServiceProviderService {
 		}
 	}
 
-	public List<ServiceProvider> getServiceProviderByType(String type) throws RestaurantNotFoundException {
+	public List<ServiceProvider> getServiceProviderByType(Type type) throws RestaurantNotFoundException {
 		try {
-			return serviceProvideRepo.findByTypeContainingIgnoreCase(type);
+			return serviceProvideRepo.findByType(type);
 		} catch (NoSuchElementException exception) {
 			throw new RestaurantNotFoundException();
 		}
