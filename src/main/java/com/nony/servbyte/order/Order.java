@@ -51,7 +51,7 @@ public class Order {
 	private List<OrderItem> items;
 
 	@Column(name = "total_price")
-	private float totalPrice;
+	private double totalPrice;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "status")

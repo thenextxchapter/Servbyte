@@ -7,6 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MealRepository extends JpaRepository<Meal, Integer> {
-	List<Meal> findByNameContainingIgnoreCase(String name);
 	List<Meal> findByServiceProviderId(Integer serviceProvider_id);
 }

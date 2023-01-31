@@ -29,11 +29,11 @@ public class PaymentService {
 		}
 	}
 
-	public Payment getPaymentByOrder(Integer orderId) throws OrderNotFoundException {
+	public Payment getPaymentByOrder(Integer orderId) throws PaymentNotFoundException {
 		try {
 			return paymentRepo.findByOrderId(orderId);
 		} catch (NoSuchElementException exception) {
-			throw new OrderNotFoundException();
+			throw new PaymentNotFoundException();
 		}
 	}
 

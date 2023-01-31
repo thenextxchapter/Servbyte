@@ -2,6 +2,7 @@ package com.nony.servbyte.meal;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import com.nony.servbyte.exception.MealNotFoundException;
 import com.nony.servbyte.exception.RestaurantNotFoundException;
@@ -16,12 +17,19 @@ public class MealService {
 		this.mealRepo = mealRepo;
 	}
 
-	public List<Meal> findByServiceProvider(Integer serviceProvider_id) throws RestaurantNotFoundException {
+	public List<Meal> findByServiceProvider(Integer serviceProvider_id)
+			throws RestaurantNotFoundException, MealNotFoundException {
 		try {
-			return mealRepo.findByServiceProviderId(serviceProvider_id);
+			List<Meal> meals = mealRepo.findByServiceProviderId(serviceProvider_id);
+
+			if (meals.isEmpty()) {
+				throw new MealNotFoundException();
+			}
+			return meals;
 		} catch (NoSuchElementException exception) {
 			throw new RestaurantNotFoundException();
 		}
+
 	}
 
 	public Meal findById(Integer id) throws MealNotFoundException {

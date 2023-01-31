@@ -53,6 +53,13 @@ public class ServiceProvider {
 	@JoinColumn(name = "city_id")
 	private City city;
 
+	public ServiceProvider(Integer id, String name, Type type, City city) {
+		this.id = id;
+		this.name = name;
+		this.type = type;
+		this.city = city;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)

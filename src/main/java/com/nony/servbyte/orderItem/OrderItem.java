@@ -44,7 +44,7 @@ public class OrderItem {
 	private Integer quantity;
 
 	@Column(name = "price")
-	private float price;
+	private double price;
 
 	@Override
 	public boolean equals(Object o) {

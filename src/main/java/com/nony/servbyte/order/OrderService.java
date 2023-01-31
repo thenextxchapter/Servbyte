@@ -38,17 +38,27 @@ public class OrderService {
 		}
 	}
 
-	public List<Order> getAllUserOrders(String userEmail) throws UserNotFoundException {
+	public List<Order> getAllUserOrders(String userEmail) throws OrderNotFoundException, UserNotFoundException {
 		try {
-			return orderRepo.findByUserEmail(userEmail);
+			List<Order> orders =  orderRepo.findByUserEmail(userEmail);
+
+			if (orders.isEmpty()) {
+				throw new OrderNotFoundException();
+			}
+			return orders;
 		} catch (NoSuchElementException exception) {
 			throw new UserNotFoundException();
 		}
 	}
 
-	public List<Order> getAllRestaurantOrders(Integer serviceProvider_id) throws RestaurantNotFoundException {
+	public List<Order> getAllRestaurantOrders(Integer serviceProvider_id) throws OrderNotFoundException, RestaurantNotFoundException {
 		try {
-			return orderRepo.findByServiceProviderId(serviceProvider_id);
+			List<Order> orders = orderRepo.findByServiceProviderId(serviceProvider_id);
+
+			if (orders.isEmpty()) {
+				throw new OrderNotFoundException();
+			}
+			return orders;
 		} catch (NoSuchElementException exception) {
 			throw new RestaurantNotFoundException();
 		}

@@ -39,7 +39,7 @@ public class Payment {
 	private Order order;
 
 	@Column(name = "amount")
-	private float amount;
+	private double amount;
 
 	@Column(name = "payment_token")
 	private String paymentToken;
@@ -47,6 +47,13 @@ public class Payment {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "status")
 	private Status status;
+
+	public Payment(Integer id, double amount, String paymentToken, Status status) {
+		this.id = id;
+		this.amount = amount;
+		this.paymentToken = paymentToken;
+		this.status = status;
+	}
 
 	@Override
 	public boolean equals(Object o) {
