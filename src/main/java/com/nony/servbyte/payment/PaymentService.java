@@ -2,7 +2,6 @@ package com.nony.servbyte.payment;
 
 import java.util.NoSuchElementException;
 
-import com.nony.servbyte.exception.OrderNotFoundException;
 import com.nony.servbyte.exception.PaymentNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;

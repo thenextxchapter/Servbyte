@@ -11,7 +11,7 @@
 	<groupId>com.nony</groupId>
 	<artifactId>Servbyte</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>Servbyte</name>
 	<description>Servbyte</description>
 	<properties>
