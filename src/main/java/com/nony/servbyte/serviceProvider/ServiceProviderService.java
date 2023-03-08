@@ -24,9 +24,9 @@ public class ServiceProviderService {
 	private final ServiceProviderRepository serviceProvideRepo;
 	private final CityRepository cityRepo;
 
-	private EntityManager em;
-	private CriteriaBuilderFactory cbf;
-	private EntityViewManager evm;
+	private final EntityManager em;
+	private final CriteriaBuilderFactory cbf;
+	private final EntityViewManager evm;
 
 	public ServiceProviderService(ServiceProviderRepository serviceProvideRepo, CityRepository cityRepo, EntityManager em,
 			CriteriaBuilderFactory cbf, EntityViewManager evm) {
