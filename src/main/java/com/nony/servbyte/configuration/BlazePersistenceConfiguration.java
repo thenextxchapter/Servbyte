@@ -4,6 +4,7 @@ import com.blazebit.persistence.Criteria;
 import com.blazebit.persistence.CriteriaBuilderFactory;
 import com.blazebit.persistence.spi.CriteriaBuilderConfiguration;
 import com.blazebit.persistence.view.EntityViewManager;
+import com.blazebit.persistence.view.EntityViews;
 import com.blazebit.persistence.view.spi.EntityViewConfiguration;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.PersistenceUnit;
@@ -24,6 +25,11 @@ public class BlazePersistenceConfiguration {
 	public CriteriaBuilderFactory createCriteriaBuilderFactory() {
 		CriteriaBuilderConfiguration config = Criteria.getDefault();
 		return config.createCriteriaBuilderFactory(entityManagerFactory);
+	}
+
+	@Bean
+	public EntityViewConfiguration entityViewConfiguration() {
+		return EntityViews.createDefaultConfiguration();
 	}
 
 	@Bean

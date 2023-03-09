@@ -17,6 +17,7 @@ import com.nony.servbyte.serviceProvider.param.RestaurantSearchParam;
 import com.nony.servbyte.serviceProvider.value.RestaurantRequest;
 import com.nony.servbyte.serviceProvider.view.RestaurantView;
 import jakarta.persistence.EntityManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -28,6 +29,7 @@ public class ServiceProviderService {
 	private final CriteriaBuilderFactory cbf;
 	private final EntityViewManager evm;
 
+	@Autowired
 	public ServiceProviderService(ServiceProviderRepository serviceProvideRepo, CityRepository cityRepo, EntityManager em,
 			CriteriaBuilderFactory cbf, EntityViewManager evm) {
 		this.serviceProvideRepo = serviceProvideRepo;
@@ -41,7 +43,7 @@ public class ServiceProviderService {
 		if (serviceProvideRepo.existsByName(request.getName()))
 			throw new BadRequestException("Restaurant with name " + request.getName() + " already exists");
 
-		if (!cityRepo.existsByName(request.getCity().getName()))
+		if (cityRepo.existsByName(request.getCity().getName()))
 			throw new BadRequestException("City with name " + request.getCity().getName() + " does not exist");
 
 		ServiceProvider serviceProvider = ServiceProvider.builder()
@@ -62,7 +64,7 @@ public class ServiceProviderService {
 		if (serviceProvideRepo.existsByNameAndIdNot(request.getName(), id))
 			throw new ConflictException("Restaurant with name " + request.getName() + " already exists");
 
-		if (!cityRepo.existsByName(request.getCity().getName()))
+		if (cityRepo.existsByName(request.getCity().getName()))
 			throw new BadRequestException("City with name " + request.getCity().getName() + " does not exist");
 
 		serviceProvider.setName(request.getName());
