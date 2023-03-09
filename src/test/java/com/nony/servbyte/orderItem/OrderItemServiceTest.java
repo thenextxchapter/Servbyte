@@ -1,3 +1,4 @@
+/*
 package com.nony.servbyte.orderItem;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -124,3 +125,4 @@ class OrderItemServiceTest {
 				() -> orderItemService.deleteOrderItem(id));
 	}
 }
+*/

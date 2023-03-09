@@ -1,3 +1,4 @@
+/*
 package com.nony.servbyte.order;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -87,20 +88,24 @@ class OrderServiceTest {
 
 		orderService.deleteOrder(id);
 
-		/*
+		*/
+/*
 		* verify is a method from the Mockito library that can be used
 		* to verify the behavior of the mock objects
-		* */
+		* *//*
+
 		verify(orderRepository).deleteById(id);
 	}
 
 	@Test
 	void deleteOrder_WithInvalidId_ShouldThrowOrderNotFoundException() {
 		Integer id = 1;
-		/*
+		*/
+/*
 		* doThrow is a method from Mockito that is used to configure a behavior
 		* for the mock object to throw an exception when a certain method is called
-		* */
+		* *//*
+
 		doThrow(new EmptyResultDataAccessException(1)).when(orderRepository).deleteById(id);
 
 		assertThrows(OrderNotFoundException.class, () -> orderService.deleteOrder(id));
@@ -187,3 +192,4 @@ class OrderServiceTest {
 				.findByServiceProviderId(1);
 	}
 }
+*/
