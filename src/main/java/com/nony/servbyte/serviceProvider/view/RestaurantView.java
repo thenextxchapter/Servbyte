@@ -10,7 +10,7 @@ import com.nony.servbyte.serviceProvider.ServiceProvider;
 public interface RestaurantView {
 
 	@IdMapping
-	Integer id();
+	Integer getId();
 	@AttributeFilter(ContainsIgnoreCaseFilter.class)
 	String getName();
 	@AttributeFilter(ContainsIgnoreCaseFilter.class)

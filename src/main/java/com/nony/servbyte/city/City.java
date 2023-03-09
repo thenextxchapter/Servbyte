@@ -9,17 +9,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 import org.hibernate.Hibernate;
 
 @Entity
 @Table(name = "city")
-@Getter
-@Setter
-@ToString
+@Builder
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class City {
