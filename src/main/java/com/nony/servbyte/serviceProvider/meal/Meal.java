@@ -1,6 +1,4 @@
-package com.nony.servbyte.meal;
-
-import java.util.Objects;
+package com.nony.servbyte.serviceProvider.meal;
 
 import com.nony.servbyte.serviceProvider.ServiceProvider;
 import jakarta.persistence.Column;
@@ -12,17 +10,14 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-import org.hibernate.Hibernate;
 
 @Entity
 @Table(name = "meal")
-@Getter
-@Setter
-@ToString
+@Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Meal {
@@ -41,7 +36,7 @@ public class Meal {
 	private String picture;
 
 	@Column(nullable = false)
-	private float price;
+	private Double price;
 
 	@Column
 	private Integer prepTime;
@@ -49,19 +44,4 @@ public class Meal {
 	@ManyToOne
 	@JoinColumn(name = "service_provider_id")
 	private ServiceProvider serviceProvider;
-
-	@Override
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o))
-			return false;
-		Meal meal = (Meal) o;
-		return id != null && Objects.equals(id, meal.id);
-	}
-
-	@Override
-	public int hashCode() {
-		return getClass().hashCode();
-	}
 }

@@ -1,6 +1,5 @@
 package com.nony.servbyte.serviceProvider.value;
 
-import com.nony.servbyte.city.City;
 import com.nony.servbyte.serviceProvider.Type;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -22,5 +21,5 @@ public class RestaurantRequest {
 	private String picture;
 	Will implement this later
 */
-	private City city;
+	private Integer cityId;
 }

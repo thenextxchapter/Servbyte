@@ -8,6 +8,7 @@ import com.blazebit.persistence.PagedList;
 import com.blazebit.persistence.PaginatedCriteriaBuilder;
 import com.blazebit.persistence.view.EntityViewManager;
 import com.blazebit.persistence.view.EntityViewSetting;
+import com.nony.servbyte.city.City;
 import com.nony.servbyte.city.CityRepository;
 import com.nony.servbyte.exception.BadRequestException;
 import com.nony.servbyte.exception.ConflictException;
@@ -43,15 +44,15 @@ public class ServiceProviderService {
 		if (serviceProvideRepo.existsByName(request.getName()))
 			throw new BadRequestException("Restaurant with name " + request.getName() + " already exists");
 
-		if (cityRepo.existsByName(request.getCity().getName()))
-			throw new BadRequestException("City with name " + request.getCity().getName() + " does not exist");
+		City city = cityRepo.findOneOptional(request.getCityId())
+				.orElseThrow(() -> new BadRequestException("City not found"));
 
 		ServiceProvider serviceProvider = ServiceProvider.builder()
 				.name(request.getName())
 				.type(request.getType())
 				.email(request.getEmail())
 				.phoneNumber(request.getPhoneNumber())
-				.city(request.getCity())
+				.city(city)
 				.build();
 
 		ServiceProvider persistedServiceProvider = serviceProvideRepo.save(serviceProvider);
@@ -64,14 +65,14 @@ public class ServiceProviderService {
 		if (serviceProvideRepo.existsByNameAndIdNot(request.getName(), id))
 			throw new ConflictException("Restaurant with name " + request.getName() + " already exists");
 
-		if (cityRepo.existsByName(request.getCity().getName()))
-			throw new BadRequestException("City with name " + request.getCity().getName() + " does not exist");
+		City city = cityRepo.findOneOptional(request.getCityId())
+				.orElseThrow(() -> new BadRequestException("City not found"));
 
 		serviceProvider.setName(request.getName());
 		serviceProvider.setType(request.getType());
 		serviceProvider.setEmail(request.getEmail());
 		serviceProvider.setPhoneNumber(request.getPhoneNumber());
-		serviceProvider.setCity(request.getCity());
+		serviceProvider.setCity(city);
 
 		return serviceProvideRepo.save(serviceProvider);
 	}
